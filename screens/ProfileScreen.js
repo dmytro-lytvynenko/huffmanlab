@@ -5,11 +5,11 @@ const ProfileScreen = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./me.jpeg')} // Замініть шлях до своєї фотографії
+        source={require('./me.jpeg')}
         style={styles.profileImage}
       />
-      <Text style={styles.name}>Dmytro Lytvynenko</Text> {}
-      <Text style={styles.bio}>Student TTP-41</Text> {}
+      <Text style={styles.name}>Dmytro Lytvynenko</Text>
+      <Text style={styles.bio}>Student TTP-41</Text>
     </View>
   );
 };

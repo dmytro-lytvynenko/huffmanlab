@@ -7,7 +7,7 @@ const CodesTable = ({ data }) => {
 
   return (
     <View>
-      <Text>Таблиця кодів Хаффмана:</Text>
+      {/* <Text>Таблиця кодів Хаффмана:</Text>
       <FlatList
         data={codesData}
         keyExtractor={(item) => item[0]}
@@ -17,7 +17,7 @@ const CodesTable = ({ data }) => {
             <Text>{item[1]}</Text>
           </View>
         )}
-      />
+      /> */}
     </View>
   );
 };

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Keyboard } from 'react-native';
 
-const DecodingScreen = ({ codes }) => {
-  const [encodedText, setEncodedText] = useState('');
+const HuffmanDecoding = ({ codes, encodedText }) => {
   const [decodedText, setDecodedText] = useState('');
 
   // Нова функція для виклику зовнішньої функції decodeHuffmanText
@@ -24,7 +23,6 @@ const DecodingScreen = ({ codes }) => {
         multiline
         placeholder="Закодований текст"
         value={encodedText}
-        onChangeText={setEncodedText}
         style={{ borderWidth: 1, borderColor: 'gray', padding: 8 }}
       />
       <Button title="Декодувати" onPress={handleDecodePress} />
@@ -58,4 +56,4 @@ function decodeHuffmanText(encodedText, codes) {
   return decodedText;
 }
 
-export default DecodingScreen;
+export default HuffmanDecoding;

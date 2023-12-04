@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as FileSystem from 'expo-file-system';
 import { View, Text, TextInput, Button, Keyboard } from 'react-native';
 
 // Функція для побудови дерева Хаффмана
@@ -78,6 +79,19 @@ const HuffmanCoding = ({
     Keyboard.dismiss();
   };
 
+  const saveToFile = async () => {
+    const fileName = 'huffman_codes.txt';
+    const fileUri = FileSystem.documentDirectory + fileName;
+    const content = `Encoded Text: ${encodedText}\nCodes Table: ${JSON.stringify(codesTable, null, 2)}`;
+  
+    try {
+      await FileSystem.writeAsStringAsync(fileUri, content);
+      alert(`Data saved to ${fileUri}`);
+    } catch (error) {
+      alert('Failed to save data: ' + error.message);
+    }
+  };
+
   return (
     <View>
       <Text>Введіть текст для кодування:</Text>
@@ -91,10 +105,9 @@ const HuffmanCoding = ({
       <Button title="Кодувати текст" onPress={encodeText} />
       <Text>Закодований текст:</Text>
       <Text>{encodedText}</Text>
-      <Text>Таблиця частот:</Text>
-      <Text>{JSON.stringify(frequencyTable, null, 2)}</Text>
       <Text>Таблиця кодів Хаффмана:</Text>
       <Text>{JSON.stringify(codesTable, null, 2)}</Text>
+      <Button title="Save to File" onPress={saveToFile} />
     </View>
   );
 };
